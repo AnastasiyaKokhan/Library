@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Libraries</title>
+</head>
+<body style="background: #deeaf8;">
+<div style="background: #b9c4dc; margin-bottom: 20px; padding: 10px">
+    <div style="display: flex; justify-content: flex-start;">
+        <a href="{% url 'add_book' %}" style="background: #b9c4dc; text-decoration: none;
+        border: solid #deeaf8 2px; border-radius: 10%; padding: 5px; color: black;"><b>Добавить книгу</b></a>
+    </div>
+</div>
+
+<div>
+<h1 style="text-align: center">Библиотеки</h1>
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 20px;">
+        {% for library in library_queryset %}
+        <div style="background: #b9c4dc; border: solid #3b4c67 2px; padding: 10px; width: 350px; text-align: center">
+            <a href="{% url 'books' library.id %}">{{library.name}}</a>
+        </div>
+        {% endfor %}
+    </div>
+    <div>
+        {% for x in book_queryset %}
+        <p><b>{{x.name}}</b> <i><small>{{x.author}}</small></i></p>
+        {% endfor %}
+    </div>
+</div>
+</body>
+</html>

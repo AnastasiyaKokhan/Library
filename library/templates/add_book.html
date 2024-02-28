@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        input{
+            height: 25px
+        }
+        select {
+            height: 25px
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Form</title>
+</head>
+<body style="background: #deeaf8; display: flex; flex-direction: column; align-items: center">
+<div style="background: #b9c4dc; border: solid #3b4c67 2px; border-radius: 10%;
+padding-bottom: 40px; padding-left: 40px; padding-right: 40px; margin-top: 50px">
+    <h1 style="text-align: center">Добавление книги</h1>
+
+<div style="display: flex; width: 300px; flex-direction: column;">
+    <form action="" method="POST" enctype="multipart/form-data" class=""
+            style="display: flex; flex-direction: column; gap: 10px; flex-grow: 1;">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="название книги">
+        <input type="text" name="author" placeholder="автор">
+        <input type="text" name="add_library" placeholder="добавьте библиотку">
+        <select name="library" style="cursor: pointer;">
+            <option value="">--выберите библиотеку--</option>
+            {% for library in libraries %}
+            <option value="{{library.name}}">{{library.name}}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Отправить" style="cursor: pointer; border: solid #3b4c67 2px;">
+    </form>
+</div>
+
+</div>
+</body>
+</html>
